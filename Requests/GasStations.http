@@ -1,0 +1,21 @@
+@host = http://localhost:5175/gasstations
+
+### successful create
+
+# @name create
+POST {{host}}
+Content-Type: application/json
+
+{
+    "Name": "Petro-Canada",
+    "Address": "123 Main Street"
+}
+
+### get based on location header
+
+GET {{create.response.headers.Location}}
+
+### failed get 
+
+GET {{host}}/id:guid?id=039f7209-7c70-447f-b17e-cb886f72ca99
+Content-Type: application/json
